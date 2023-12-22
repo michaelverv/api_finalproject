@@ -62,4 +62,4 @@ class Playlist(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
 
     user = relationship("User", back_populates="playlists")
-    song = relationship("Playlist", back_populates="playlist")
+    song = relationship("Song", back_populates="playlist")
