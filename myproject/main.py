@@ -61,15 +61,6 @@ def read_songs(limit: int = 100, db: Session = Depends(get_db_session)):
     return crud.get_songs(db, limit=limit)
 
 
-# GET /songs/{name}
-# @app.get("/songs/{name}", response_model=schemas.Song)
-# def read_song_by_name(name: str, db: Session = Depends(get_db_session)):
-# db_song_name = crud.get_song_by_name(db, name=name)
-# if db_song_name is None:
-# raise HTTPException(status_code=404, detail="Song not found")
-# return
-
-
 # POST /bands/{band_id}/albums/{album_id}/songs
 @app.post("/songs", response_model=schemas.Song)
 def create_song(album_id: int, song: schemas.SongCreate, db: Session = Depends(get_db_session)):
@@ -86,3 +77,68 @@ def delete_band(band_id: int, db: Session = Depends(get_db_session)):
 @app.delete("/delete")
 def delete_all(db: Session = Depends(get_db_session)):
     crud.delete_db(db)
+
+
+# GET /users/?skip=&limit=
+@app.get("/users", response_model=list[schemas.User])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db_session)):
+    users = crud.get_users(db=db, skip=skip, limit=limit)
+    return users
+
+
+# POST /users
+@app.post("/users", response_model=schemas.User)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db_session)):
+    db_username = crud.get_user_by_username(db, username=user.username)
+    db_email = crud.get_user_by_email(db, email=user.email)
+    if db_username:
+        raise HTTPException(status_code=400, detail="Username already exists")
+    if db_email:
+        raise HTTPException(status_code=400, detail="Email already in use")
+    return crud.create_user(db, user=user)
+
+
+# GET /users/{user_id}
+@app.get("/users/{id}",  response_model=schemas.User)
+def read_user(user_id: int, db: Session = Depends(get_db_session)):
+    db_user = crud.get_user(db, user_id=user_id)
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
+
+
+# GET /users/{user_id}/playlist
+@app.get("/users/{id}/playlist",  response_model=list[schemas.Playlist])
+def read_playlist(user_id: int, db: Session = Depends(get_db_session)):
+    db_playlist = crud.get_playlists_of_user(db, user_id=user_id)
+    return db_playlist
+
+
+# POST /users/{user_id}/playlist
+@app.post("/users/{id}/playlist",  response_model=schemas.Playlist)
+def create_playlist_for_user(
+        user_id: int,
+        name: str,
+        description: str,
+        playlist: schemas.PlaylistCreate,
+        db: Session = Depends(get_db_session)
+):
+    return crud.create_playlist(db, playlist=playlist, user_id=user_id, description=description, name=name)
+
+
+# PUT /users/{user_id}/playlist/{playlist_id}
+@app.put("/users/{user_id}/playlist/{playlist_id}",  response_model=schemas.Playlist)
+def update_playlist_of_user(
+        user_id: int,
+        playlist_id: int,
+        name: str,
+        description: str,
+        playlist: schemas.PlaylistCreate,
+        db: Session = Depends(get_db_session)
+):
+    return crud.update_playlist(
+        db, playlist=playlist,
+        playlist_id=playlist_id,
+        name=name, description=description,
+        user_id=user_id
+    )

@@ -43,10 +43,6 @@ def get_songs(db: Session, limit: int = 100):
     return db.query(models.Song).limit(limit).all()
 
 
-# def get_song_by_name(db: Session, name: str):
-    # return db.query(models.Song).filter(models.Song.name == name).first
-
-
 def create_song(db: Session, song: schemas.SongCreate, album_id: int):
     db_song = models.Song(
         **song.dict(),
@@ -68,3 +64,63 @@ def delete_db(db: Session):
     db.query(models.Album).delete()
     db.query(models.Song).delete()
     db.commit()
+
+
+def create_user(db: Session, user: schemas.UserCreate):
+    fake_hashed_password = user.hashed_password + "nothashed"
+    db_user = models.User(
+        email=user.email,
+        hashed_password=fake_hashed_password,
+        username=user.username
+    )
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+
+def get_user(db: Session, user_id: int):
+    return db.query(models.User).filter(models.User.id == user_id).first
+
+
+def get_user_by_username(db: Session, username: str):
+    return db.query(models.User).filter(models.User.username == username).first
+
+
+def get_user_by_email(db: Session, email: str):
+    return db.query(models.User).filter(models.User.email == email).first
+
+
+def get_users(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.User).offset(skip).limit(limit).all()
+
+
+def create_playlist(db: Session, playlist: schemas.PlaylistCreate, user_id: int, description: str, name: str):
+    db_playlist = models.Playlist(
+        **playlist.dict(),
+        user_id=user_id,
+        description=description,
+        name=name
+    )
+    db.add(db_playlist)
+    db.commit()
+    db.refresh(db_playlist)
+    return db_playlist
+
+
+def get_playlists_of_user(db: Session, user_id: int):
+    return db.query(models.Playlist).filter(models.Playlist.user_id == user_id)
+
+
+def update_playlist(db: Session, playlist_id: int, playlist: schemas.PlaylistCreate, user_id: int, description: str, name: str):
+    db.query(models.Playlist).filter(models.Playlist.id == playlist_id).first.delete()
+    db_playlist = models.Playlist(
+        **playlist.dict(),
+        user_id=user_id,
+        description=description,
+        name=name
+    )
+    db.add(db_playlist)
+    db.commit()
+    db.refresh(db_playlist)
+    return db_playlist
