@@ -43,7 +43,7 @@ def get_songs(db: Session, limit: int = 100):
     return db.query(models.Song).limit(limit).all()
 
 
-def create_song(db: Session, song: schemas.SongCreate, album_id: int):
+def create_song(db: Session, song: schemas.SongCreate, album_id: int | None = None):
     db_song = models.Song(
         **song.dict(),
         album_id=album_id,
@@ -95,7 +95,13 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 
-def create_playlist(db: Session, playlist: schemas.PlaylistCreate, user_id: int, description: str, name: str):
+def create_playlist(
+        db: Session,
+        playlist: schemas.PlaylistCreate,
+        user_id: int,
+        name: str,
+        description: str | None = None
+):
     db_playlist = models.Playlist(
         **playlist.dict(),
         user_id=user_id,

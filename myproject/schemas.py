@@ -10,7 +10,7 @@ class SongBase(BaseModel):
 # Song OUT
 class Song(SongBase):
     id: int
-    album_id: int
+    album_id: int | None = None
 
     class Config:
         orm_mode = True
@@ -70,7 +70,7 @@ class BandCreate(BandBase):
 class PlaylistBase(BaseModel):
     name: str
     songs: list[Song] = []
-    description: str
+    description: str | None = None
     user_id: int
 
 

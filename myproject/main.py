@@ -61,7 +61,7 @@ def read_songs(limit: int = 100, db: Session = Depends(get_db_session)):
     return crud.get_songs(db, limit=limit)
 
 
-# POST /bands/{band_id}/albums/{album_id}/songs
+# POST /songs
 @app.post("/songs", response_model=schemas.Song)
 def create_song(album_id: int, song: schemas.SongCreate, db: Session = Depends(get_db_session)):
     return crud.create_song(db, song=song, album_id=album_id)
