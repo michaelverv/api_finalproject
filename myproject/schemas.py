@@ -104,4 +104,4 @@ class User(UserBase):
 
 # User IN
 class UserCreate(UserBase):
-    hashed_password: int
+    password: int

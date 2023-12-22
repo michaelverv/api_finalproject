@@ -1,4 +1,6 @@
 from sqlalchemy.orm import Session
+
+import auth
 import models
 import schemas
 
@@ -67,10 +69,10 @@ def delete_db(db: Session):
 
 
 def create_user(db: Session, user: schemas.UserCreate):
-    fake_hashed_password = user.hashed_password + "nothashed"
+    hashed_password = auth.get_password_hash(user.password)
     db_user = models.User(
         email=user.email,
-        hashed_password=fake_hashed_password,
+        hashed_password=hashed_password,
         username=user.username
     )
     db.add(db_user)
