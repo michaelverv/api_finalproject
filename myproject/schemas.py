@@ -70,7 +70,7 @@ class BandCreate(BandBase):
 class PlaylistBase(BaseModel):
     name: str
     songs: list[Song] = []
-    description: str | None = None
+    description: str
     user_id: int
 
 
