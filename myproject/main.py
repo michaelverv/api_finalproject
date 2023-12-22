@@ -68,7 +68,7 @@ def create_song(song: schemas.SongCreate, db: Session = Depends(get_db_session))
 
 
 # POST /songs
-@app.post("/songs", response_model=schemas.Song)
+@app.post("/songs/{album_id}", response_model=schemas.Song)
 def create_song_with_album(album_id: int, song: schemas.SongCreate, db: Session = Depends(get_db_session)):
     return crud.create_song(db, song=song, album_id=album_id)
 
