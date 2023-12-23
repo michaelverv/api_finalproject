@@ -72,7 +72,7 @@ def create_user(db: Session, user: schemas.UserCreate):
     hashed_password = auth.get_password_hash(user.password)
     db_user = models.User(
         email=user.email,
-        hashed_password=hashed_password,
+        password=hashed_password,
         username=user.username
     )
     db.add(db_user)
@@ -120,8 +120,15 @@ def get_playlists_of_user(db: Session, user_id: int):
     return db.query(models.Playlist).filter(models.Playlist.user_id == user_id)
 
 
-def update_playlist(db: Session, playlist_id: int, playlist: schemas.PlaylistCreate, user_id: int, description: str, name: str):
-    db.query(models.Playlist).filter(models.Playlist.id == playlist_id).first.delete()
+def update_playlist(
+        db: Session,
+        playlist_id: int,
+        playlist: schemas.PlaylistCreate,
+        user_id: int,
+        description: str,
+        name: str
+):
+    db.query(models.Playlist).filter(models.Playlist.id == playlist_id).delete()
     db_playlist = models.Playlist(
         **playlist.dict(),
         user_id=user_id,

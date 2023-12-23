@@ -91,12 +91,12 @@ class PlaylistCreate(PlaylistBase):
 class UserBase(BaseModel):
     username: str
     email: str
-    playlists: list[Playlist] = []
 
 
 # User OUT
 class User(UserBase):
     id: int
+    playlists: list[Playlist] = []
 
     class Config:
         orm_mode = True
@@ -104,4 +104,4 @@ class User(UserBase):
 
 # User IN
 class UserCreate(UserBase):
-    password: int
+    password: str
