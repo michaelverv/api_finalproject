@@ -52,9 +52,16 @@ Laat alle bands zien.
 
 ### GET /bands/{band_id}
 Laat een specifieke band zien door de id van een band mee te geven.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/8a6cf2df-7c19-44a7-8e1c-80ce4bac1f3d)
 
 ### POST /bands/{band_id}/albums
+Gaat een album toevoegen bij een specifieke band door de id van deze band mee te geven.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/7ec755b0-e599-4504-9ca5-9a803cc5d2c8)
+
 ### GET /albums
+Laat alle albums zien.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/2cc9dd01-6532-4caa-9347-043cad26ffe2)
+
 ### POST /songs
 ### POST /songs/{album_id}
 ### GET /songs
