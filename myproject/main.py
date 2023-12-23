@@ -127,7 +127,7 @@ def read_playlist(user_id: int, db: Session = Depends(get_db_session)):
 
 
 # POST /users/{user_id}/playlist
-@app.post("/users/{id}/playlist",  response_model=schemas.Playlist)
+@app.post("/users/{user_id}/playlist",  response_model=schemas.Playlist)
 def create_playlist_for_user(
         user_id: int,
         playlist: schemas.PlaylistCreate,
