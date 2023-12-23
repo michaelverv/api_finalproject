@@ -68,13 +68,38 @@ Maak een nummer aan dat **niet** gelinkt is aan een album.
 
 ### POST /songs/{album_id}
 Maakt een nummer aan dat gelinkt wordt aan een bepaald albums doordat er een album id wordt meegegeven.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/91125feb-4516-44cb-9e3a-ff1b797969ff)
 
 ### GET /songs
+Laat alle songs zien.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/920a8139-6d1f-4a81-91ab-0eb7273e68e6)
+
 ### DELETE /bands/{band_id}/delete
+Verwijdert een specifieke band door de band id mee te geven in de URI.
+
 ### DELETE /delete
+Verwijdert alle data in de database.
+
 ### POST /users
+Maakt een user aan en checkt of de username/email al niet bestaat in de database.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/18a14d3e-182d-44f1-9744-e81aad4cc51b)
+
+Bij het opnieuw doorsturen van dezelfde data, is er een melding zichtbaar dat de username al bestaat.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/85b86af3-9224-4267-a642-99ac04b6bab4)
+
+Hetzelfde voor de email, ondanks dat de username nu anders is.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/2d23fce5-0c46-401f-a17c-dcf400f31ed2)
+
 ### GET /users
+Laat alle users zien.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/765d82a9-1ec0-4ff2-9b85-acdd54a75571)
+
 ### GET /users/{user_id}
+Laat een specifieke user zien door de user id mee te geven. Voor deze endpoint te gebruiken moet er geauthorizeerd worden via OAuth, indien dit niet nog niet is gedaan krijg je de volgende melding:
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/860e132a-79b1-459c-b733-c7ceb41aa7c6)
+
+Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd. `meer uitleg`
+
 ### POST /users/{user_id}/playlist
 ### GET /users/{user_id}/playlist
 ### PUT /users/{user_id}/playlist/{playlist_id}
