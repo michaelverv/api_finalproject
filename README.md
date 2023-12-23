@@ -42,20 +42,20 @@ Dit zijn screenshots van alle endpoint die de API bevat.
 ## API werking met Postman
 Via Postman wordt van elke endpoint van de API waargegeven hoe deze werkt.
 
-## POST /bands
-## GET /bands
-## GET /bands/{band_id}
-## POST /bands/{band_id}/albums
-## GET /albums
-## POST /songs
-## POST /songs/{album_id}
-## GET /songs
-## DELETE /bands/{band_id}/delete
-## DELETE /delete
-## POST /users
-## GET /users
-## GET /users/{user_id}
-## POST /users/{user_id}/playlist
-## GET /users/{user_id}/playlist
-## PUT /users/{user_id}/playlist/{playlist_id}
-## POST /token
+### POST /bands
+### GET /bands
+### GET /bands/{band_id}
+### POST /bands/{band_id}/albums
+### GET /albums
+### POST /songs
+### POST /songs/{album_id}
+### GET /songs
+### DELETE /bands/{band_id}/delete
+### DELETE /delete
+### POST /users
+### GET /users
+### GET /users/{user_id}
+### POST /users/{user_id}/playlist
+### GET /users/{user_id}/playlist
+### PUT /users/{user_id}/playlist/{playlist_id}
+### POST /token
