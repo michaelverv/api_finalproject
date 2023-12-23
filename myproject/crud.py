@@ -56,6 +56,29 @@ def create_song(db: Session, song: schemas.SongCreate, album_id: int = None):
     return db_song
 
 
+def add_song_to_playlist_of_user(
+        db: Session,
+        playlist_id: int,
+        song_id: int,
+):
+    playlist = db.query(models.Playlist).filter(models.Playlist.id == playlist_id).first()
+    if not playlist:
+        return None  # Or you can raise an HTTPException here
+
+    song = db.query(models.Song).filter(models.Song.id == song_id).first()
+    if not song:
+        return None  # Or you can raise an HTTPException here
+
+    # Make sure the song belongs to the user or handle permissions as needed
+    if song.playlist_id or song.album_id:  # Ensure the song is not already in another playlist or album
+        return None  # Or raise an exception
+
+    song.playlist_id = playlist_id
+    db.commit()
+    db.refresh(song)
+    return song
+
+
 def delete_band(db: Session, band_id: int):
     db.query(models.Band).filter(models.Band.id == band_id).delete()
     db.commit()

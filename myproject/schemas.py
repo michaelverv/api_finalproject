@@ -69,7 +69,6 @@ class BandCreate(BandBase):
 # Playlist Base
 class PlaylistBase(BaseModel):
     name: str
-    songs: list[Song] = []
     description: str
     user_id: int
 
@@ -77,6 +76,7 @@ class PlaylistBase(BaseModel):
 # Playlist OUT
 class Playlist(PlaylistBase):
     id: int
+    songs: list[Song] = []
 
     class Config:
         orm_mode = True
