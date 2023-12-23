@@ -23,15 +23,15 @@ De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workf
 
 ## Uitgewerkte nummers
 ### 1. ALGEMENE EISEN & DOCUMENTATIE (alles samen +50%)
-- [x] Minstens 3 GET, 1 POST, 1 PUT en 1 DELETE endpoints
-- [x] Minstens 3 entiteiten in je API via een SQLite databank
-- [x] Minstens hashing en OAuth implementeren
-- [x] Beschrijving van het gekozen thema, je API(s) en je uitbreidingen + link naar de zaken die hosted zijn op GitHub README.md
+- :heavy_check_mark: Minstens 3 GET, 1 POST, 1 PUT en 1 DELETE endpoints
+- :heavy_check_mark: Minstens 3 entiteiten in je API via een SQLite databank
+- :heavy_check_mark: Minstens hashing en OAuth implementeren
+- :heavy_check_mark: Beschrijving van het gekozen thema, je API(s) en je uitbreidingen + link naar de zaken die hosted zijn op GitHub README.md
 - [ ] Aantoonbare werking totale API door screenshots van Postman requests op GitHub README.md
-- [x] Volledige OpenAPI docs screenshot(s) op GitHub README.md
-- [x] Logisch gebruik van path parameters, query parameters en body
-- [x] Docker container voor de API(s), welke automatisch door GitHub Actions opgebouwd wordt
-- [x] Deployment van de API container(s) op Okteto Cloud via Docker Compose
+- :heavy_check_mark: Volledige OpenAPI docs screenshot(s) op GitHub README.md
+- :heavy_check_mark: Logisch gebruik van path parameters, query parameters en body
+- :heavy_check_mark: Docker container voor de API(s), welke automatisch door GitHub Actions opgebouwd wordt
+- :heavy_check_mark: Deployment van de API container(s) op Okteto Cloud via Docker Compose
 - [ ] Test alle GET endpoints van een van je APIs via de Requests en pytest library met een testfile in de root van je repository.
 
 ## OpenAPI docs
