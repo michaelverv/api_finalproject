@@ -23,16 +23,16 @@ De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workf
 
 ## Uitgewerkte nummers
 ### 1. ALGEMENE EISEN & DOCUMENTATIE (alles samen +50%)
-- Minstens 3 GET, 1 POST, 1 PUT en 1 DELETE endpoints [x]
-- Minstens 3 entiteiten in je API via een SQLite databank [x]
-- Minstens hashing en OAuth implementeren [x]
-- Beschrijving van het gekozen thema, je API(s) en je uitbreidingen + link naar de zaken die hosted zijn op GitHub README.md [x]
-- Aantoonbare werking totale API door screenshots van Postman requests op GitHub README.md []
-- Volledige OpenAPI docs screenshot(s) op GitHub README.md [x]
-- Logisch gebruik van path parameters, query parameters en body [x]
-- Docker container voor de API(s), welke automatisch door GitHub Actions opgebouwd wordt [x]
-- Deployment van de API container(s) op Okteto Cloud via Docker Compose [x]
-- Test alle GET endpoints van een van je APIs via de Requests en pytest library met een testfile in de root van je repository. []
+- - [x] Minstens 3 GET, 1 POST, 1 PUT en 1 DELETE endpoints
+- - [x] Minstens 3 entiteiten in je API via een SQLite databank
+- - [x] Minstens hashing en OAuth implementeren
+- - [x] Beschrijving van het gekozen thema, je API(s) en je uitbreidingen + link naar de zaken die hosted zijn op GitHub README.md
+- - [x] Aantoonbare werking totale API door screenshots van Postman requests op GitHub README.md
+- - [x] Volledige OpenAPI docs screenshot(s) op GitHub README.md
+- - [x] Logisch gebruik van path parameters, query parameters en body
+- - [x] Docker container voor de API(s), welke automatisch door GitHub Actions opgebouwd wordt
+- - [x] Deployment van de API container(s) op Okteto Cloud via Docker Compose
+- - [x] Test alle GET endpoints van een van je APIs via de Requests en pytest library met een testfile in de root van je repository.
 
 ## OpenAPI docs
 Dit zijn screenshots van alle endpoint die de API bevat.
