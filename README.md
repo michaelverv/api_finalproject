@@ -63,7 +63,12 @@ Laat alle albums zien.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/2cc9dd01-6532-4caa-9347-043cad26ffe2)
 
 ### POST /songs
+Maak een nummer aan dat **niet** gelinkt is aan een album.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/4cd927ca-2b45-4eda-8d87-25a2d1dec8ba)
+
 ### POST /songs/{album_id}
+Maakt een nummer aan dat gelinkt wordt aan een bepaald albums doordat er een album id wordt meegegeven.
+
 ### GET /songs
 ### DELETE /bands/{band_id}/delete
 ### DELETE /delete
