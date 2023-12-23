@@ -41,7 +41,7 @@ def create_band(band: schemas.BandCreate, db: Session = Depends(get_db_session))
 
 
 # GET /bands/{band_id}
-@app.get("/bands/{id}", response_model=schemas.Band)
+@app.get("/bands/{band_id}", response_model=schemas.Band)
 def read_band(band_id: int, db: Session = Depends(get_db_session)):
     db_band = crud.get_band(db, band_id=band_id)
     if db_band is None:
@@ -111,7 +111,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db_session))
 
 
 # GET /users/{user_id}
-@app.get("/users/{id}",  response_model=schemas.User)
+@app.get("/users/{user_id}",  response_model=schemas.User)
 def read_user(user_id: int, db: Session = Depends(get_db_session), token: str = Depends(oauth2_scheme)):
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
@@ -120,14 +120,14 @@ def read_user(user_id: int, db: Session = Depends(get_db_session), token: str = 
 
 
 # GET /users/{user_id}/playlist
-@app.get("/users/{id}/playlist",  response_model=list[schemas.Playlist])
+@app.get("/users/{user_id}/playlist",  response_model=list[schemas.Playlist])
 def read_playlist(user_id: int, db: Session = Depends(get_db_session)):
     db_playlist = crud.get_playlists_of_user(db, user_id=user_id)
     return db_playlist
 
 
 # POST /users/{user_id}/playlist
-@app.post("/users/{id}/playlist",  response_model=schemas.Playlist)
+@app.post("/users/{user_id}/playlist",  response_model=schemas.Playlist)
 def create_playlist_for_user(
         user_id: int,
         name: str,

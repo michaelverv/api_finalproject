@@ -6,7 +6,7 @@ import schemas
 
 
 def get_band(db: Session, band_id: int):
-    return db.query(models.Band).filter(models.Band.id == band_id).first
+    return db.query(models.Band).filter(models.Band.id == band_id).first()
 
 
 def get_bands(db: Session, limit: int = 50):
