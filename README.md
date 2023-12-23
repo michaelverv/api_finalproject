@@ -43,8 +43,16 @@ Dit zijn screenshots van alle endpoint die de API bevat.
 Via Postman wordt van elke endpoint van de API waargegeven hoe deze werkt.
 
 ### POST /bands
+Gaat een band aanmaken om naar de database sturen.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/e641d019-4edb-4e02-a5d9-c910f0e1993a)
+
 ### GET /bands
+Laat alle bands zien.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/ac4d9c43-1126-41f8-acdb-a003d1338a15)
+
 ### GET /bands/{band_id}
+Laat een specifieke band zien door de id van een band mee te geven.
+
 ### POST /bands/{band_id}/albums
 ### GET /albums
 ### POST /songs
