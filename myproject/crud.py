@@ -124,14 +124,10 @@ def create_playlist(
         db: Session,
         playlist: schemas.PlaylistCreate,
         user_id: int,
-        name: str,
-        description: str
 ):
     db_playlist = models.Playlist(
         **playlist.dict(),
-        user_id=user_id,
-        description=description,
-        name=name
+        user_id=user_id
     )
     db.add(db_playlist)
     db.commit()
@@ -140,7 +136,7 @@ def create_playlist(
 
 
 def get_playlists_of_user(db: Session, user_id: int):
-    return db.query(models.Playlist).filter(models.Playlist.user_id == user_id)
+    return db.query(models.Playlist).filter(models.Playlist.user_id == user_id).all()
 
 
 def update_playlist(

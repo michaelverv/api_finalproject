@@ -70,13 +70,13 @@ class BandCreate(BandBase):
 class PlaylistBase(BaseModel):
     name: str
     description: str
-    user_id: int
 
 
 # Playlist OUT
 class Playlist(PlaylistBase):
     id: int
     songs: list[Song] = []
+    user_id: int
 
     class Config:
         orm_mode = True
