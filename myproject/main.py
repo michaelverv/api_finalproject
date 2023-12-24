@@ -127,13 +127,14 @@ def read_playlist(user_id: int, db: Session = Depends(get_db_session)):
 
 
 # POST /playlist
-@app.post("/playlist", response_model=schemas.Playlist)
+@app.post("/users/{user_id}/playlist", response_model=schemas.Playlist)
 def create_playlist_for_user(
-    user_id: int,
-    playlist: schemas.PlaylistCreate,
-    db: Session = Depends(get_db_session)
+        user_id: int,
+        playlist: schemas.PlaylistCreate,
+        db: Session = Depends(get_db_session)
 ):
     return crud.create_playlist(db, playlist=playlist, user_id=user_id)
+
 
 
 # POST /users/{user_id}/playlist/{playlist_id}/songs/{song_id}
