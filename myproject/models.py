@@ -38,9 +38,9 @@ class Song(Base):
     duration = Column(Float)
 
     album_id = Column(Integer, ForeignKey("albums.id"))
-    playlist_id = Column(Integer, ForeignKey("playlists.id"))
+    # playlist_id = Column(Integer, ForeignKey("playlists.id"))
     album = relationship("Album", back_populates="songs")
-    playlist = relationship("Playlist", back_populates="song")
+    # playlist = relationship("Playlist", back_populates="song")
 
 
 class User(Base):
@@ -63,4 +63,4 @@ class Playlist(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
 
     user = relationship("User", back_populates="playlists")
-    song = relationship("Song", back_populates="playlist")
+    # song = relationship("Song", back_populates="playlist")

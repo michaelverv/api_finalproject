@@ -88,6 +88,8 @@ def delete_db(db: Session):
     db.query(models.Band).delete()
     db.query(models.Album).delete()
     db.query(models.Song).delete()
+    db.query(models.Playlist).delete()
+    db.query(models.User).delete()
     db.commit()
 
 

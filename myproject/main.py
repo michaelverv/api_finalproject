@@ -136,20 +136,19 @@ def create_playlist_for_user(
     return crud.create_playlist(db, playlist=playlist, user_id=user_id)
 
 
-
 # POST /users/{user_id}/playlist/{playlist_id}/songs/{song_id}
-@app.post("/users/{user_id}/playlist/{playlist_id}/songs/{song_id}", response_model=schemas.Song)
-def add_song_to_playlist_of_user(
-        user_id: int,
-        playlist_id: int,
-        song_id: int,
-        db: Session = Depends(get_db_session)
-):
-    song = crud.add_song_to_playlist_of_user(db, playlist_id, song_id)
-    if not song:
-        raise HTTPException(status_code=404, detail="Song or Playlist not found or already exists in another playlist")
-
-    return song
+# @app.post("/users/{user_id}/playlist/{playlist_id}/songs/{song_id}", response_model=schemas.Song)
+# def add_song_to_playlist_of_user(
+#         user_id: int,
+#         playlist_id: int,
+#         song_id: int,
+#         db: Session = Depends(get_db_session)
+# ):
+#     song = crud.add_song_to_playlist_of_user(db, playlist_id, song_id)
+#     if not song:
+#        raise HTTPException(status_code=404, detail="Song or Playlist not found or already exists in another playlist")
+#
+#     return song
 
 
 # PUT /users/{user_id}/playlist/{playlist_id}
