@@ -141,22 +141,16 @@ def get_playlists_of_user(db: Session, user_id: int):
     return db.query(models.Playlist).filter(models.Playlist.user_id == user_id).all()
 
 
-def update_playlist(
-        db: Session,
-        playlist_id: int,
-        playlist: schemas.PlaylistCreate,
-        user_id: int,
-        description: str,
-        name: str
+def update_user(
+    db: Session,
+    user_id: int,
+    user: schemas.UserCreate
 ):
-    db.query(models.Playlist).filter(models.Playlist.id == playlist_id).delete()
-    db_playlist = models.Playlist(
-        **playlist.dict(),
-        user_id=user_id,
-        description=description,
-        name=name
-    )
-    db.add(db_playlist)
+    db_user = get_user(db, user_id=user_id)
+    hashed_password = auth.get_password_hash(user.password)
+    db_user.email = user.email
+    db_user.password = hashed_password
+    db_user.username = user.username
     db.commit()
-    db.refresh(db_playlist)
-    return db_playlist
+    db.refresh(db_user)
+    return db_user

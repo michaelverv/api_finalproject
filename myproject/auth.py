@@ -25,7 +25,7 @@ def authenticate_user(db: Session, username: str, password: str):
     user = crud.get_user_by_email(db, username)
     if not user:
         return False
-    if not verify_password(password, user.hashed_password):
+    if not verify_password(password, user.password):
         return False
     return user
 
@@ -36,9 +36,7 @@ def create_access_token(data: dict):
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
     else:
-        # Default to 15 minutes of expiration time if ACCESS_TOKEN_EXPIRE_MINUTES variable is empty
         expire = datetime.utcnow() + timedelta(minutes=15)
-    # Adding the JWT expiration time case
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
