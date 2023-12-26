@@ -118,7 +118,18 @@ Laat alle playlists zien van een gebruiker.
 
 ### PUT /users
 Via deze endpoint is het mogelijk om de gegevens van een gebruiker aan te passen. Voor security redenen is het aanpassen van gebruikers enkel mogelijk door geauthorizeerd te zijn via OAuth, indien dit niet nog niet is gedaan krijg je de volgende melding:
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/34ddb904-8f76-4c4d-bfdf-8feb0a76dfc1)
 
-Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd, dit kan via de /token in Postman of in de OpenAPI docs kan dit gemakkelijk met de `Authorize` knop.
-`meer uitleg`
+Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd, dit kan via de `/token` in te geven via Postman of in de OpenAPI docs kan dit gemakkelijk met de `Authorize` knop. Dus voor deze endpoint ga ik werken via de knop, deze maakt automatisch gebruik van de /token andpoint om de gegevens daar naar door te sturen. De knop ziet er als volgende uit:
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/943c8243-3388-4725-822d-3cd14b487ade)
+Door op de knop te drukken verschijnt dit scherm:
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/d10fe516-9521-47fa-b5f3-7b7095c7f41f)
+
+
+Voor we de gebruiker aanpassen doen we een GET request voor de data van de gebruiker te zien:
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/79210b8c-d71b-4591-9be8-649423d4639f)
+Hierna voeren we een PUT request uit op dezelfde gebuiker om de gegevens aan te passen:
+
+Als we dan opnieuw een GET request uitvoeren is het te zien dat de gegevens zijn aangepast:
+
 ### POST /token
