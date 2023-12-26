@@ -40,7 +40,7 @@ Dit zijn screenshots van alle endpoint die de API bevat.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/7adf1549-a1bb-42df-9140-485f56965c49)
 
 ## API werking met Postman
-Via Postman wordt van elke endpoint van de API waargegeven hoe deze werkt.
+Via Postman wordt van elke endpoint van de API weergegeven hoe deze werkt.
 
 ### POST /bands
 Gaat een band aanmaken om naar de database sturen.
