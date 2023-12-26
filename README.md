@@ -29,7 +29,7 @@ De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workf
 - :heavy_check_mark: Minstens 3 entiteiten in je API via een SQLite databank
 - :heavy_check_mark: Minstens hashing en OAuth implementeren
 - :heavy_check_mark: Beschrijving van het gekozen thema, je API(s) en je uitbreidingen + link naar de zaken die hosted zijn op GitHub README.md
-- [ ] Aantoonbare werking totale API door screenshots van Postman requests op GitHub README.md
+- :heavy_check_mark: Aantoonbare werking totale API door screenshots van Postman requests op GitHub README.md
 - :heavy_check_mark: Volledige OpenAPI docs screenshot(s) op GitHub README.md
 - :heavy_check_mark: Logisch gebruik van path parameters, query parameters en body
 - :heavy_check_mark: Docker container voor de API(s), welke automatisch door GitHub Actions opgebouwd wordt
