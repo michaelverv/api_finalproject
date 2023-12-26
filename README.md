@@ -81,14 +81,17 @@ Verwijdert een specifieke band door de band id mee te geven in de URI.
 
 Bij een GET /bands zijn de volgende bands te zien:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/6dfebfcd-57ca-412d-b31a-98456a5cda75)
+
 Bij het uitvoeren van een /bands/2/delete gaat de band "Slipknot" uit de database worden gehaald. Na het uitvoeren wordt er een null waarde teruggegeven.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/5809a516-41b8-485f-bbb7-27aea2f2202e)
+
 Bij het opnieuw uitvoeren van een GET /bands request is het te zien dat de band is verwijderd.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/1c4c197d-e394-4796-99c3-facdd32aba38)
 
 ### DELETE /delete
 Verwijdert alle data in de database, dit houd in: alle bands, albums, songs, playlists en users.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/954449e1-7c1f-4377-b620-6d702fd2d269)
+
 Na het uitvoeren van deze endpoint gaat deze een null waarde terug geven als bevestiging dat alles is verwijderd. Bij het maken van een GET request zijn er lege vierkante haakjes als response omdat er geen data is.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/bbec3862-7d14-47ce-aa64-f86ec7a9b4cc)
 
@@ -124,16 +127,21 @@ Via deze endpoint is het mogelijk om de gegevens van een gebruiker aan te passen
 
 Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd, dit kan via de `/token` in te geven maar eigenlijk wordt deze automatisch gebruikt in de OpenAPI docs, hier kan dit gemakkelijk met de `Authorize` knop. Dus voor deze endpoint ga ik werken via de knop, deze maakt automatisch gebruik van de /token andpoint om de gegevens daar naar door te sturen. De knop ziet er als volgende uit:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/943c8243-3388-4725-822d-3cd14b487ade)
+
 Door op de knop te drukken verschijnt dit scherm:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/d10fe516-9521-47fa-b5f3-7b7095c7f41f)
+
 Als we hier de gegevens invullen en op de knop drukken komt dit scherm tevoorschijn:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/9cb1d661-0396-471a-94ea-12163b2b826d)
+
 Dit wilt zeggen dat het inloggen gelukt is en dat het nu mogelijk is om de PUT endpoint te gebruiken.
 
 Voor we de gebruiker aanpassen doen we een GET request voor de data van de gebruiker te zien:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/79210b8c-d71b-4591-9be8-649423d4639f)
+
 Hierna voeren we een PUT request uit op dezelfde gebuiker om de gegevens aan te passen, de id wordt meegegeven in de URL:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/d8db7ef6-a064-425e-bd46-2446de78c1b6)
+
 Als we dan opnieuw een GET request uitvoeren is het te zien dat de gegevens zijn aangepast:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/ea519719-38e5-47af-9f28-5c070a0737fd)
 
