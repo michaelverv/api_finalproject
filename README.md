@@ -36,8 +36,8 @@ De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workf
 
 ## OpenAPI docs
 Dit zijn screenshots van alle endpoint die de API bevat.
-![image](https://github.com/michaelverv/api_finalproject/assets/113921262/1277d673-a175-4e71-8ee1-34d55dbbd67d)
-![image](https://github.com/michaelverv/api_finalproject/assets/113921262/717809bd-1d76-43de-8cd4-7f4bf5564123)
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/28d96103-61e5-4fbe-8653-303b7c1c194f)
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/7adf1549-a1bb-42df-9140-485f56965c49)
 
 ## API werking met Postman
 Via Postman wordt van elke endpoint van de API waargegeven hoe deze werkt.
@@ -77,8 +77,18 @@ Laat alle songs zien.
 ### DELETE /bands/{band_id}/delete
 Verwijdert een specifieke band door de band id mee te geven in de URI.
 
+Bij een GET /bands zijn de volgende bands te zien:
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/6dfebfcd-57ca-412d-b31a-98456a5cda75)
+Bij het uitvoeren van een /bands/2/delete gaat de band "Slipknot" uit de database worden gehaald. Na het uitvoeren wordt er een null waarde teruggegeven.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/5809a516-41b8-485f-bbb7-27aea2f2202e)
+Bij het opnieuw uitvoeren van een GET /bands request is het te zien dat de band is verwijderd.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/1c4c197d-e394-4796-99c3-facdd32aba38)
+
 ### DELETE /delete
-Verwijdert alle data in de database.
+Verwijdert alle data in de database, dit houd in: alle bands, albums, songs, playlists en users.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/954449e1-7c1f-4377-b620-6d702fd2d269)
+Na het uitvoeren van deze endpoint gaat deze een null waarde terug geven als bevestiging dat alles is verwijderd. Bij het maken van een GET request zijn er lege vierkante haakjes als response omdat er geen data is.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/bbec3862-7d14-47ce-aa64-f86ec7a9b4cc)
 
 ### POST /users
 Maakt een user aan en checkt of de username/email al niet bestaat in de database.
@@ -95,12 +105,20 @@ Laat alle users zien.
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/765d82a9-1ec0-4ff2-9b85-acdd54a75571)
 
 ### GET /users/{user_id}
-Laat een specifieke user zien door de user id mee te geven. Voor deze endpoint te gebruiken moet er geauthorizeerd worden via OAuth, indien dit niet nog niet is gedaan krijg je de volgende melding:
-![image](https://github.com/michaelverv/api_finalproject/assets/113921262/860e132a-79b1-459c-b733-c7ceb41aa7c6)
-
-Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd. `meer uitleg`
+Laat een specifieke user zien door de user id mee te geven in de URL.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/bfee2bce-2f36-4458-9956-2c77132efe7e)
 
 ### POST /users/{user_id}/playlist
+Hiermee kan er een playlist aangemaakt worden voor een gebruiker. Mijn originele bedoeling was om er makkelijk nummers in te kunnen zetten, dit is me echter niet gelukt. De code die ik hiervoor had geschreven heb ik in commentaar laten staan. Ondanks dat het niet mogelijk is om nummers toe te voegen aan een playlist, heb ik de lijst met songs leeg laten staan.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/eb9d232d-71fa-4bf8-8e0f-42d913bca64b)
+
 ### GET /users/{user_id}/playlist
-### PUT /users/{user_id}/playlist/{playlist_id}
+Laat alle playlists zien van een gebruiker.
+![image](https://github.com/michaelverv/api_finalproject/assets/113921262/addd6dc8-59df-41ff-a24c-68565707d709)
+
+### PUT /users
+Via deze endpoint is het mogelijk om de gegevens van een gebruiker aan te passen. Voor security redenen is het aanpassen van gebruikers enkel mogelijk door geauthorizeerd te zijn via OAuth, indien dit niet nog niet is gedaan krijg je de volgende melding:
+
+Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd, dit kan via de /token in Postman of in de OpenAPI docs kan dit gemakkelijk met de `Authorize` knop.
+`meer uitleg`
 ### POST /token
