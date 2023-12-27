@@ -34,7 +34,7 @@ De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workf
 - :heavy_check_mark: Logisch gebruik van path parameters, query parameters en body
 - :heavy_check_mark: Docker container voor de API(s), welke automatisch door GitHub Actions opgebouwd wordt
 - :heavy_check_mark: Deployment van de API container(s) op Okteto Cloud via Docker Compose
-- [ ] Test alle GET endpoints van een van je APIs via de Requests en pytest library met een testfile in de root van je repository.
+- :heavy_check_mark: Test alle GET endpoints van een van je APIs via de Requests en pytest library met een testfile in de root van je repository.
 
 ## OpenAPI docs
 Dit zijn screenshots van alle endpoint die de API bevat.
