@@ -22,7 +22,8 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
-    "http://127.0.0.1"
+    "http://127.0.0.1",
+    "https://api-finalproject-michaelverv.cloud.okteto.net"
 ]
 
 app.add_middleware(
