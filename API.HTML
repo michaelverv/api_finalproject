@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Michael Vervoort</title>
+</head>
+<body>
+  <h1>Simple Frontend</h1>
+
+  <div>
+    <h2>Get Bands</h2>
+    <button onclick="getBands()">Get Bands</button>
+    <ul id="bandsList"></ul>
+  </div>
+
+  <div>
+    <h2>Create Band</h2>
+    <input type="text" id="bandName" placeholder="Band Name">
+    <input type="text" id="leadSinger" placeholder="Lead Singer">
+    <input type="text" id="genre" placeholder="Genre">
+    <label for="active">Is Still Active:</label>
+    <input type="checkbox" id="active">
+    <button onclick="createBand()">Create Band</button>
+  </div>
+
+  <script>
+    // Function to make GET request to get bands
+    function getBands() {
+      fetch('https://api-finalproject-michaelverv.cloud.okteto.net/bands') // Replace with your endpoint URL
+        .then(response => response.json())
+        .then(data => {
+          const bandsList = document.getElementById('bandsList');
+          bandsList.innerHTML = '';
+          data.forEach(band => {
+            const li = document.createElement('li');
+            li.textContent = `${band.name} - ${band.genre}`;
+            bandsList.appendChild(li);
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Function to make POST request to create a band
+    function createBand() {
+      const bandName = document.getElementById('bandName').value;
+      const leadSinger = document.getElementById('leadSinger').value;
+      const genre = document.getElementById('genre').value;
+      const isActive = document.getElementById('active').checked;
+
+      const data = {
+        name: bandName,
+        lead_singer: leadSinger,
+        genre: genre,
+        is_still_active: isActive
+      };
+
+      fetch('https://api-finalproject-michaelverv.cloud.okteto.net/bands', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        // Optionally, perform actions on successful band creation
+        // For example, update UI or display a success message
+      })
+      .catch(error => console.error('Error:', error));
+    }
+  </script>
+</body>
+</html>

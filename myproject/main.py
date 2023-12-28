@@ -7,6 +7,7 @@ import schemas
 from database import engine, SessionLocal
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import auth
+from fastapi.middleware.cors import CORSMiddleware
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -17,6 +18,20 @@ if not os.path.exists('.\sqlitedb'):
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
+
+
+origins = [
+    "http://localhost",
+    "http://127.0.0.1"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_db_session():
