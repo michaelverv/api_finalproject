@@ -3,44 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <title>API Michael Vervoort</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
-  <h1>Simple Frontend</h1>
+<body class="">
+  <div class="container card bg-light">
 
-  <div>
-    <h2>Get Bands</h2>
-    <button onclick="getBands()">Get Bands</button>
-    <ul id="bandsList"></ul>
-  </div>
+    <div class="m-auto">
+      <h1 class="text-center">Music API</h1>
+      <p>Ever tried to build your own music collection? Try it now with this music API that keeps track of all the bands, albums and songs you</p>
+    </div>
 
-  <div>
-    <h2>Create Band</h2>
-    <input type="text" id="bandName" placeholder="Band Name">
-    <input type="text" id="leadSinger" placeholder="Lead Singer">
-    <input type="text" id="genre" placeholder="Genre">
-    <label for="active">Is Still Active:</label>
-    <input type="checkbox" id="active">
-    <button onclick="createBand()">Create Band</button>
+    <div class="row mt-5">
+      <div class="col-5 offset-1">
+        <h2>Bands with their albums</h2>
+        <ol id="bandsList"></ol>
+      </div>
+      <div class="col-5">
+        <h2>Albums with their songs</h2>
+        <ol id="albumsList"></ol>
+      </div>
+    </div>
+
+  <div class="row my-5">
+    <div class="col-4">
+      <h2 class="text-center">Create Band</h2>
+      <input class="form-control mb-3" type="text" id="bandName" placeholder="Band Name">
+      <input class="form-control mb-3" type="text" id="leadSinger" placeholder="Lead Singer">
+      <input class="form-control mb-3"type="text" id="genre" placeholder="Genre">
+      <label for="active">Is Still Active:</label>
+      <input type="checkbox" id="active">
+      <button class="btn btn-dark mx-3" onclick="createBand()">Create Band</button>
+    </div>
+
+    <div class="col-4">
+      <h2 class="text-center">Create Album</h2>
+      <input class="form-control mb-3" type="text" id="albumName" placeholder="Album Name">
+      <input class="form-control mb-3" type="number" id="albumReleaseDate" placeholder="Release Date">
+      <input class="form-control mb-3" type="number" id="albumAmountOfSongs" placeholder="Number of songs">
+      <input class="form-control mb-3" type="number" id="albumDuration" placeholder="Duration album">
+      <input class="form-control mb-3" type="number" id="bandId" placeholder="ID of the band">
+      <button class="btn btn-dark" onclick="createAlbum()">Create Album</button>
+    </div>
+
+    <div class="col-4">
+      <h2 class="text-center">Create Song</h2>
+      <input class="form-control mb-3" type="text" id="songName" placeholder="Song Name">
+      <input class="form-control mb-3" type="number" id="songDuration" placeholder="Duration Song">
+      <input class="form-control mb-3" type="number" id="albumId" placeholder="ID of the Album">
+      <button class="btn btn-dark" onclick="createSong()">Create Song</button>
+    </div>
   </div>
 
   <script>
-    // Function to make GET request to get bands
-    function getBands() {
-      fetch('https://api-finalproject-michaelverv.cloud.okteto.net/bands') // Replace with your endpoint URL
-        .then(response => response.json())
-        .then(data => {
-          const bandsList = document.getElementById('bandsList');
-          bandsList.innerHTML = '';
-          data.forEach(band => {
-            const li = document.createElement('li');
-            li.textContent = `${band.name} - ${band.genre}`;
-            bandsList.appendChild(li);
-          });
-        })
-        .catch(error => console.error('Error:', error));
-    }
+    window.onload = function() {
+    getBands();
+    getAlbums();
+    };
 
-    // Function to make POST request to create a band
+    function getBands() {
+    fetch('https://api-finalproject-michaelverv.cloud.okteto.net/bands')
+    .then(response => response.json())
+    .then(data => {
+      const bandsList = document.getElementById('bandsList');
+      bandsList.innerHTML = '';
+      data.forEach(band => {
+        const li = document.createElement('li');
+        li.textContent = `${band.name} - ${band.lead_singer} - ${band.genre}`;
+
+        const albumsList = document.createElement('ul');
+        band.albums.forEach(album => {
+          const albumItem = document.createElement('li');
+          albumItem.textContent = `${album.name} - ${album.release_date}`;
+          albumsList.appendChild(albumItem);
+        });
+
+        li.appendChild(albumsList);
+        bandsList.appendChild(li);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
     function createBand() {
       const bandName = document.getElementById('bandName').value;
       const leadSinger = document.getElementById('leadSinger').value;
@@ -64,11 +107,91 @@
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
-        // Optionally, perform actions on successful band creation
-        // For example, update UI or display a success message
       })
       .catch(error => console.error('Error:', error));
     }
+
+    function getAlbums() {
+    fetch('https://api-finalproject-michaelverv.cloud.okteto.net/albums')
+    .then(response => response.json())
+    .then(data => {
+      const albumsList = document.getElementById('albumsList');
+      albumsList.innerHTML = '';
+      data.forEach(album => {
+        const albumItem = document.createElement('li');
+        albumItem.textContent = `${album.name} - ${album.release_date}`;
+
+        const songsList = document.createElement('ul');
+        album.songs.forEach(song => {
+          const songItem = document.createElement('li');
+          songItem.textContent = `${song.name}`;
+          songsList.appendChild(songItem);
+        });
+
+        albumItem.appendChild(songsList);
+        albumsList.appendChild(albumItem);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+    function createAlbum() {
+    const albumName = document.getElementById('albumName').value;
+    const releaseDate = document.getElementById('albumReleaseDate').value;
+    const amountOfSongs = document.getElementById('albumAmountOfSongs').value;
+    const albumDuration = document.getElementById('albumDuration').value;
+    const bandId = document.getElementById('bandId').value;
+
+    const data = {
+      name: albumName,
+      release_date: releaseDate,
+      amount_of_songs: amountOfSongs,
+      duration: albumDuration,
+    };
+
+    fetch(`https://api-finalproject-michaelverv.cloud.okteto.net/bands/${bandId}/albums`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+      getAlbums();
+    })
+    .catch(error => console.error('Error:', error));
+    }
+
+
+    function createSong() {
+    const songName = document.getElementById('songName').value;
+    const songDuration = document.getElementById('songDuration').value;
+    const albumId = document.getElementById('albumId').value;
+
+    const data = {
+      name: songName,
+      duration: songDuration,
+    };
+
+    fetch(`https://api-finalproject-michaelverv.cloud.okteto.net/songs/${albumId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+      getAlbums();
+    })
+    .catch(error => console.error('Error:', error));
+    }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</div>
 </body>
 </html>
