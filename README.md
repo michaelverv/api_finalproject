@@ -23,6 +23,7 @@ De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workf
 - Hashing van wachtwoorden
 - OAuth op GET /users endpoint
 - Token
+- Frontend
 
 ## Uitgewerkte nummers
 ### 1. ALGEMENE EISEN & DOCUMENTATIE (alles samen +50%)
