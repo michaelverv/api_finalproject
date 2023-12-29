@@ -10,13 +10,6 @@ import auth
 from fastapi.middleware.cors import CORSMiddleware
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-
-if not os.path.exists('.\sqlitedb'):
-    os.makedirs('.\sqlitedb')
-
-models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 
@@ -35,6 +28,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+
+if not os.path.exists('.\sqlitedb'):
+    os.makedirs('.\sqlitedb')
+
+models.Base.metadata.create_all(bind=engine)
 
 
 def get_db_session():
