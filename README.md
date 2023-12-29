@@ -8,6 +8,7 @@ Het doel van mijn API is om de app `Spotify` als inspiratie te gebruiken voor ee
 
 ## API
 ### Link API: https://api-finalproject-michaelverv.cloud.okteto.net/
+### Link Frontend API: https://api-michaelv.netlify.app/api
 
 ### Uitleg API
 Met deze API is het mogelijk om een collectie bij te houden van je favoriete bands, albums en songs. Door gebruik te maken van alle endpoints hieronder, is dit gebruiksvriendelijk en gemakkelijk te doen. In tegenstelling tot de oudere API is het nu ook mogelijk om verschillende playlists te maken. Deze playlists zijn gelinkt aan een account van een user, deze is beveiligt volgens de eisen van de opdracht. In de playlist zelf is het mogelijk om verschillende songs te zetten, de favoriete bands, albums en songs zijn ook nog beschikbaar.
