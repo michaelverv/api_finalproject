@@ -19,7 +19,8 @@ origins = [
     "http://127.0.0.1:5500",
     "https://api-finalproject-michaelverv.cloud.okteto.net",
     "https://api-finalproject-michaelverv.cloud.okteto.net/bands",
-    "https://api-michaelv.netlify.app/api"
+    "https://api-michaelv.netlify.app/api",
+    "https://api-michaelv.netlify.app"
 ]
 
 app.add_middleware(
