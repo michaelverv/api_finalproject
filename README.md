@@ -13,7 +13,7 @@ Het doel van mijn API is om de app `Spotify` als inspiratie te gebruiken voor ee
 ### Uitleg API
 Met deze API is het mogelijk om een collectie bij te houden van je favoriete bands, albums en songs. Door gebruik te maken van alle endpoints hieronder, is dit gebruiksvriendelijk en gemakkelijk te doen. In tegenstelling tot de oudere API is het nu ook mogelijk om verschillende playlists te maken. Deze playlists zijn gelinkt aan een account van een user, deze is beveiligt volgens de eisen van de opdracht. In de playlist zelf is het mogelijk om verschillende songs te zetten, de favoriete bands, albums en songs zijn ook nog beschikbaar.
 
-De API wordt toegangelijk gesteld via Okteto doormiddel van github met een workflow die de dockerimage van de website dockerhub haalt. Met behulp van docker-compose en workflow wordt dit geautomatiseerd en is het makkelijk om via Okteto de github repo aan te duiden en deze op te starten.
+De API wordt toegangelijk gesteld via Okteto, doormiddel van github met een workflow die de dockerimage van de website dockerhub haalt. Met behulp van docker-compose en workflow wordt dit geautomatiseerd en is het makkelijk om via Okteto de github repo aan te duiden en deze op te starten.
 
 ### Functies van de API
 - 7 GET endpoints
@@ -134,7 +134,7 @@ Laat alle playlists zien van een gebruiker.
 Via deze endpoint is het mogelijk om de gegevens van een gebruiker aan te passen. Voor security redenen is het aanpassen van gebruikers enkel mogelijk door geauthorizeerd te zijn via OAuth, indien dit niet nog niet is gedaan krijg je de volgende melding:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/34ddb904-8f76-4c4d-bfdf-8feb0a76dfc1)
 
-Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd, dit kan via de `/token` in te geven maar eigenlijk wordt deze automatisch gebruikt in de OpenAPI docs, hier kan dit gemakkelijk met de `Authorize` knop. Dus voor deze endpoint ga ik werken via de knop, deze maakt automatisch gebruik van de /token andpoint om de gegevens daar naar door te sturen. De knop ziet er als volgende uit:
+Dus om deze endpoint te kunnen gebruiken moet er eerst worden geauthoriseerd, dit kan via de `/token` in te geven maar eigenlijk wordt deze automatisch gebruikt in de OpenAPI docs, hier kan dit gemakkelijk met de `Authorize` knop. Dus voor deze endpoint ga ik werken via de knop, deze maakt automatisch gebruik van de /token endpoint om de gegevens daar naar door te sturen. De knop ziet er als volgende uit:
 ![image](https://github.com/michaelverv/api_finalproject/assets/113921262/943c8243-3388-4725-822d-3cd14b487ade)
 
 Door op de knop te drukken verschijnt dit scherm:
